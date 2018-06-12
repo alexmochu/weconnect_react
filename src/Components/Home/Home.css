@@ -1,0 +1,19 @@
+.index-container {
+    background:  linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://images.pexels.com/photos/1130287/pexels-photo-1130287.jpeg?cs=srgb&dl=architecture-billboards-bridge-1130287.jpg&fm=jpg) no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.index-container h1 {
+    padding-top: 21%;
+    text-transform: capitalize;
+    font-size: 60px;
+    font-weight: 100;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    text-align: center;
+}
