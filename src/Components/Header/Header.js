@@ -106,6 +106,6 @@ function mapStateToProps(state) {
 Header.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,
-    currentUserId: PropTypes.number.isRequired
+    currentUserId: PropTypes.number
 };
 export default connect(mapStateToProps, { logout: actions.logout })(Header);
