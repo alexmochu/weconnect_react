@@ -8,7 +8,7 @@ import { signup } from '../../actions/user';
 
 
 class Signup extends React.Component {
-    submit = data => this.props.signup(data).then(() => this.props.history.push('/api/v2/auth/register'));
+    submit = data => this.props.signup(data).then(() => this.props.history.push('/api/v2/auth/login'));
     
     render() {
         document.title = 'weConnect | Signup';

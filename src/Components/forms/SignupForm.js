@@ -7,8 +7,9 @@ import InlineError from '../messages/InlineError';
 
 class SignupForm extends React.Component {
     state = {
+        dataType: 'json',
         data: {
-            user_name: '',
+            username: '',
             email: '',
             password: '',
             confirm_password: ''
@@ -36,7 +37,7 @@ onSubmit = (event) => {
 
 validate = (data) => {
     const errors = {};
-    if (!data.user_name) errors.user_name = 'Username can\'t be blank';
+    if (!data.username) errors.username = 'Username can\'t be blank';
     if (!isEmail(data.email)) errors.email = 'Email can\'t be blank';    
     if (!data.password) errors.password = 'Password can\'t be blank';
     return errors;
@@ -52,20 +53,20 @@ render() {
                     <p>{errors.error}</p>
                 </Message>
             )}
-            <Form.Field error={!!errors.user_name} required>
-                <label htmlFor="user_name">Username</label>
+            <Form.Field error={!!errors.username} required>
+                <label htmlFor="username">Username</label>
                 <input 
                     type="text"
-                    id="user_name" 
-                    name="user_name" 
+                    id="username" 
+                    name="username" 
                     placeholder="Albert" 
-                    value={data.user_name} 
+                    value={data.username} 
                     onChange={this.onChange}
                 />
-                {errors.user_name && <InlineError text={errors.user_name} />}
+                {errors.username && <InlineError text={errors.username} />}
             </Form.Field>
             <Form.Field error={!!errors.email} required>
-                <label htmlFor="user_name">Email</label>
+                <label htmlFor="username">Email</label>
                 <input 
                     type="email"
                     id="email" 
