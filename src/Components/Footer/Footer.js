@@ -7,7 +7,7 @@ class Footer extends Component {
   
   render() {
       return (
-          <Menu fixed='bottom'>
+          <Menu className='footer'>
                 <p>2018 weConnect UI Templates Project by <a href="https://github.com/alexmochu">alexmochu</a>.</p>
           </Menu>
       );
