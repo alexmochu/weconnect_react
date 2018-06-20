@@ -65,7 +65,7 @@ class Header extends Component {
             My businesses
                   </Menu.Item>
                   <Menu.Item
-                      name='search-events'
+                      name='search-business'
                       color='orange'
                       active={activeItem === 'search-businesses'}
                       onClick={this.handleItemClick}
@@ -100,7 +100,7 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         isAuthenticated: !!state.user.auth_token,
-        currentUserId: state.auth.user.sub
+        currentUserId: state.user.username
     };
 }; 
 Header.propTypes = {
