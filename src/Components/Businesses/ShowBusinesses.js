@@ -1,62 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Container } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
-import Loading from '../../Components/loading/Loading';
-import Error from '../../Components/loading/Error';
-import BusinessDetail from '../BusinessDetail/BusinessDetail';
-import './ShowBusinesses.css';
-
-class Businesses extends React.Component {
-    componentDidMount() {
-        this.props.fetchEvents();
-    }
-    
-    render() {
-        document.title = 'weConnect | Business';
-        const { loading, events, error } = this.props;
-        if (loading) {
-            return <Loading/>;
-        }
-        if (error) {
-            return <Error/>;
-        }
-        return(
-            <div>
-                <header className="events-header">
-                    <h1 className="center">Available Businesses</h1>
-                </header>
-                <Container style={{ marginTop: '1.5em' }}>
-                    <div>
-                        {events.map(event =>
-                            <Link
-                                to={'/events/' + event.id}
-                                key={event.id}>
-                                <BusinessDetail
-                                    title={event.title}
-                                    description={event.description}
-                                    date={event.date}
-                                    location={event.location}
-                                    category={event.category}
-                                    id={event.id}
-                                    guests={event.guests}
-                                />
-                            </Link>
-                        )}
-                    </div>
-                    <br/>
-                </Container>
-            </div>
-        );
-    }
+import BusinessDetail from "../BusinessDetail/BusinessDetail";
+import "./ShowBusinesses.css";
+import { Notifications } from "../messages/Notifications";
+class ShowBusinesses extends Component {
+  /*
+    invoked immediately after a component 
+    is mounted. render() will be called twice 
+    */
+  componentDidMount() {
+    this.props.fetchBusinesses();
+    Notifications();
+  }
+  render() {
+    document.title = "weConnect | Businesses";
+    const { businesses } = this.props;
+    return (
+      <div>
+        <header>
+          <h1>Available Businesses</h1>
+        </header>
+        <Container style={{ marginTop: "1.5em" }}>
+          {businesses.map(business => (
+            <Link
+              to={"/api/v2/business/" + business.business_id}
+              key={business.business_id}
+            >
+              <BusinessDetail
+                owner={business.business_owner}
+                business={business.business}
+                location={business.business_location}
+              />
+            </Link>
+          ))}
+        </Container>
+      </div>
+    );
+  }
 }
-
-Businesses.propTypes = {
-    fetchEvents: PropTypes.func,
-    loading: PropTypes.bool,
-    events: PropTypes.array,
-    error: PropTypes.string
+// typechecking validation
+ShowBusinesses.propTypes = {
+  fetchBusinesses: PropTypes.func
 };
 
-export default Businesses;
+export default ShowBusinesses;
