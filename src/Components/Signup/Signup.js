@@ -36,9 +36,9 @@ class Signup extends React.Component {
 
 Signup.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-  signup: PropTypes.func.isRequired,
+    push: PropTypes.func
+  }),
+  signup: PropTypes.func,
   message: PropTypes.string
 };
 

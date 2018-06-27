@@ -11,9 +11,7 @@ class Login extends React.Component {
   }
 
   submit = data =>
-    this.props
-      .login(data)
-      .then(() => this.props.history.push("/api/v2/business/all"));
+    this.props.login(data).then(() => this.props.history.push("/businesses"));
 
   render() {
     const { message } = this.props;
@@ -36,9 +34,9 @@ class Login extends React.Component {
 
 Login.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-  login: PropTypes.func.isRequired,
+    push: PropTypes.func
+  }),
+  login: PropTypes.func,
   message: PropTypes.string
 };
 

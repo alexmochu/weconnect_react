@@ -30,7 +30,7 @@ class Header extends Component {
             color="orange"
             active={activeItem === "browse-businesses"}
             onClick={this.handleItemClick}
-            href="/api/v2/business/all"
+            href="/businesses"
           >
             View businesses
           </Menu.Item>
@@ -40,7 +40,7 @@ class Header extends Component {
             color="orange"
             active={activeItem === "create-business"}
             onClick={this.handleItemClick}
-            href="/api/v2/business/all"
+            href="/business/new"
           >
             Create businesses
           </Menu.Item>

@@ -5,11 +5,13 @@ import auth from "./reducers/auth";
 import loading from "./reducers/loading.reducer";
 import error from "./reducers/error.reducer";
 import businesses from "./reducers/businesses";
+import business from "./reducers/business.reducer";
 
 export default combineReducers({
   user,
   auth,
   error,
   loading,
-  businesses
+  businesses,
+  business
 });

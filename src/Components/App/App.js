@@ -4,8 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Home from "../Home/Home";
+import CreateBusiness from "../CreateBusiness/CreateBusiness";
 import HeaderContainer from "../Header/HeaderContainer";
-import Footer from "../Footer/Footer";
+import BusinessContainer from "../BusinessDetail/BusinessContainer";
 import SignupContainer from "../Signup/SignupContainer";
 import LoginContainer from "../Login/LoginContainer";
 import ProtectedRoute from "../Routes/ProtectedRoute";
@@ -19,14 +20,15 @@ class App extends Component {
           <Fragment>
             <HeaderContainer />
             <Route exact path="/" component={Home} />
-            <ProtectedRoute
+            <Route
               exact
-              path="/api/v2/business/all"
+              path="/businesses"
               component={ShowBusinessesContainer}
             />
+            <Route path="/business/:id" component={BusinessContainer} />
+            <ProtectedRoute path="/business/new" component={CreateBusiness} />
             <Route path="/api/v2/auth/login" component={LoginContainer} />
             <Route path="/api/v2/auth/register" component={SignupContainer} />
-            <Footer />
           </Fragment>
         </Switch>
       </div>

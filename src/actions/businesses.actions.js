@@ -34,22 +34,51 @@ export const businessDeleted = () => ({
   type: BUSINESS_DELETED
 });
 
-export const businessEdited = data => ({
+export const businessEdited = business_item => ({
   type: BUSINESS_UPDATED,
-  data
+  business_item
 });
 
 export const messageCleared = () => ({
   type: MESSAGE_CLEARED
 });
 
+// export const clearMessage = () => dispatch => {
+//     dispatch(requestStarted());
+// };
+
+export const fetchBusiness = business_id => dispatch => {
+  dispatch(requestStarted());
+  return client
+    .get(`/api/v2/business/${business_id}`)
+    .then(res => {
+      dispatch(businessFetched(res.data.business));
+    })
+    .catch(error => dispatch(requestFailed("something went wrong")));
+};
+
 export const fetchBusinesses = () => dispatch => {
   dispatch(requestStarted());
   return client
     .get("/api/v2/business/all")
     .then(res => {
-      console.log(res);
       dispatch(businessesFetched(res.data.businesses));
     })
     .catch(error => dispatch(requestFailed("something went wrong")));
 };
+
+// export const createBusiness = business => dispatch => {
+//   dispatch(requestStarted());
+//   return client.post("/api/v2/business", { business }).then(res => {
+//     console.log("business data", business);
+//     dispatch(businessCreated(res.data.business));
+//     return res.data.business_item;
+//   });
+// };
+
+export function createBusiness(business) {
+  return dispatch =>
+    client
+      .post("/api/v2/business", { business })
+      .then(res => dispatch(businessCreated));
+}
