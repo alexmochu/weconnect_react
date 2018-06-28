@@ -6,7 +6,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e521975b15f4d2b8c1b79606832cb2a)](https://www.codacy.com/app/alexmochu/weConnect_React?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexmochu/weConnect_React&amp;utm_campaign=Badge_Grade)
 
 
-[View on Heroku](#)
+[View on Heroku](https://weconnect-ui.herokuapp.com/)
 
 ## Install
 
