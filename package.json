@@ -56,5 +56,8 @@
     "react-scripts": "^1.1.4",
     "react-test-renderer": "^16.4.1",
     "sinon": "^6.0.0"
+  },
+  "engines": {
+    "node": "8.11.3"
   }
 }
