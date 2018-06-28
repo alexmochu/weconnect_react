@@ -7,7 +7,7 @@ import {
 } from "../types";
 
 const initialState = {
-  created: false,
+  created: true,
   deleted: false
 };
 

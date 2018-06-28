@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Label, Icon, Message } from "semantic-ui-react";
+import { Container, Message } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import "./BusinessItem.css";
 import { Notifications } from "../messages/Notifications";
@@ -52,14 +52,6 @@ class BusinessItem extends Component {
             <h1>Businesses Item </h1>
             <br />
             <h1>{business.created}</h1>
-            <p>
-              <Icon name="location arrow" color="grey" /> {business.owner}
-            </p>
-            <div className="business-category">
-              <Label basic color="black" size="small">
-                <h5>#{business.category}</h5>
-              </Label>
-            </div>
           </div>
         </Container>
         <br />
