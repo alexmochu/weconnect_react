@@ -1,31 +1,39 @@
-import React, { Component , Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { Route, Switch } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
-import Home from '../Home/Home';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Login from '../Login/Login';
-import Signup from '../Signup/Signup';
-import ShowBusinesses from '../Businesses/ShowBusinesses';
+import Home from "../Home/Home";
+import CreateBusiness from "../CreateBusiness/CreateBusiness";
+import HeaderContainer from "../Header/HeaderContainer";
+import BusinessContainer from "../BusinessDetail/BusinessContainer";
+import SignupContainer from "../Signup/SignupContainer";
+import LoginContainer from "../Login/LoginContainer";
+import ProtectedRoute from "../Routes/ProtectedRoute";
+import ShowBusinessesContainer from "../Businesses/ShowBusinessesContainer";
 
 class App extends Component {
   render() {
-      return (
-          <Router>
-              <Fragment>
-                  <Header />
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/api/v2/business/all' component={ShowBusinesses} />
-                  <Route path='/api/v2/auth/login' component={Login} />
-                  <Route path='/api/v2/auth/register' component={Signup} />
-                  <Footer />
-              </Fragment>
-          </Router>
-      );
+    return (
+      <div>
+        <Switch>
+          <Fragment>
+            <HeaderContainer />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/businesses"
+              component={ShowBusinessesContainer}
+            />
+            <Route path="/business/:id" component={BusinessContainer} />
+            <ProtectedRoute path="/business/new" component={CreateBusiness} />
+            <Route path="/api/v2/auth/login" component={LoginContainer} />
+            <Route path="/api/v2/auth/register" component={SignupContainer} />
+          </Fragment>
+        </Switch>
+      </div>
+    );
   }
 }
 
 export default App;
-

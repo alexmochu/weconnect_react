@@ -1,33 +1,45 @@
-import React from 'react';
-import { Container } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from "react";
+import { Container, Message } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
-import SignupForm from '../forms/SignupForm';
-import { signup } from '../../actions/user';
-
+import SignupForm from "../forms/SignupForm";
+import { Notifications } from "../messages/Notifications";
 
 class Signup extends React.Component {
-    submit = data => this.props.signup(data).then(() => this.props.history.push('/api/v2/auth/login'));
-    
-    render() {
-        document.title = 'weConnect | Signup';
-        return (
-            <div style={{ marginTop: '7em' }}>
-                <Container text>
-                    <h1>Signup</h1>
-                    <SignupForm submit={this.submit} />
-                </Container>
-            </div>
-        );
-    }
+  componentDidMount() {
+    Notifications();
+  }
+
+  submit = data =>
+    this.props
+      .signup(data)
+      .then(() => this.props.history.push("/api/v2/auth/login"));
+
+  render() {
+    const { message } = this.props;
+    document.title = "weConnect | Signup";
+    return (
+      <div style={{ marginTop: "7em" }}>
+        <Container text>
+          {message && (
+            <Message positive className="semantic-message">
+              <p>{message}</p>
+            </Message>
+          )}
+          <h1>Signup</h1>
+          <SignupForm submit={this.submit} />
+        </Container>
+      </div>
+    );
+  }
 }
 
 Signup.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-    signup: PropTypes.func.isRequired
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }),
+  signup: PropTypes.func,
+  message: PropTypes.string
 };
 
-export default connect(null, { signup })(Signup);
+export default Signup;
