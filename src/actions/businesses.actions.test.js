@@ -2,7 +2,7 @@ import * as actions from "./businesses.actions";
 import * as types from "../types";
 
 describe("actions", () => {
-  it("fetches all events", () => {
+  it("fetches all businesses", () => {
     const businesses = {};
     const expectedAction = {
       type: types.BUSINESSES_FETCHED,
@@ -10,7 +10,7 @@ describe("actions", () => {
     };
     expect(actions.businessesFetched(businesses)).toEqual(expectedAction);
   });
-  it("creates an event", () => {
+  it("creates a business", () => {
     const data = {};
     const expectedAction = {
       type: types.BUSINESS_CREATED,

@@ -2,11 +2,10 @@ import React from "react";
 import { Container, Card, Button, Label } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "./BusinessDetail.css";
 
 document.title = "weConnect | Business";
 
-const BusinessDetail = props => {
+const UserBusinessDetail = props => {
   return (
     <Container text>
       <div className="business-detail">
@@ -19,15 +18,14 @@ const BusinessDetail = props => {
             </Card.Meta>
             <p>
               <Label>Location: {props.location}</Label>
-
               <Label color="olive">Category: {props.category}</Label>
             </p>
           </Card.Content>
           <Card.Content extra textAlign="center">
-            <Button animated="fade" color="yellow">
-              <Link to={`/business/${props.id}`}>
-                <Button.Content visible>View Business Reviews</Button.Content>
-                <Button.Content hidden>or Review Business</Button.Content>
+            <Button animated="fade" color="red">
+              <Link to={`/my/business/${props.id}`}>
+                <Button.Content visible>View Business</Button.Content>
+                <Button.Content hidden>Profile </Button.Content>
               </Link>
             </Button>
           </Card.Content>
@@ -38,11 +36,11 @@ const BusinessDetail = props => {
 };
 
 // typechecking validation
-BusinessDetail.propTypes = {
+UserBusinessDetail.propTypes = {
   business: PropTypes.string,
   owner: PropTypes.string,
   location: PropTypes.string,
   id: PropTypes.number
 };
 
-export default BusinessDetail;
+export default UserBusinessDetail;
