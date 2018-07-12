@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Message, Icon } from "semantic-ui-react";
+import { Container, Message, Icon, Grid, Pagination } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 import "./ShowBusinesses.css";
@@ -12,6 +12,18 @@ class ShowBusinesses extends React.Component {
     invoked immediately after a component 
     is mounted. render() will be called twice 
     */
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1,
+      boundaryRange: 1,
+      siblingRange: 1,
+      totalPages: 50,
+      open: false
+    };
+  }
+
   componentDidMount() {
     this.props.fetchBusinesses();
     Notifications();
@@ -19,7 +31,15 @@ class ShowBusinesses extends React.Component {
 
   render() {
     document.title = "weConnect | Business";
-    const { businesses, message } = this.props;
+    const {
+      businesses,
+      message,
+      activePage,
+      boundaryRange,
+      siblingRange,
+      totalPages
+    } = this.props;
+    console.log(">>>>>", this.props);
     return (
       <div>
         <header>
@@ -50,11 +70,24 @@ class ShowBusinesses extends React.Component {
                   business={business.business}
                   location={business.business_location}
                   id={business.business_id}
+                  category={business.business_category}
                 />
               </Link>
             ))}
           </div>
           <br />
+          {/* <Grid centered columns={4}>
+            <Grid.Column>
+              <Pagination
+                activePage={activePage}
+                boundaryRange={boundaryRange}
+                onPageChange={this.handlePaginationChange}
+                size="mini"
+                siblingRange={siblingRange}
+                totalPages={totalPages}
+              />
+            </Grid.Column>
+          </Grid> */}
         </Container>
       </div>
     );
