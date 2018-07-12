@@ -1,11 +1,10 @@
 import React from "react";
 import { Form, Button, Message } from "semantic-ui-react";
-import propTypes from "prop-types";
-
+import PropTypes from "prop-types";
 import InlineError from "../messages/InlineError";
 import { Notifications } from "../messages/Notifications";
 
-class CreateBusinessForm extends React.Component {
+class EditBusinessForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,42 +24,33 @@ class CreateBusinessForm extends React.Component {
   // handles form data state change
   onChange = e =>
     this.setState({
-      data: {
-        ...this.state.data,
-        [e.target.name]: e.target.value
-      }
+      data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
+  /*
+invoked just before mounting occurs. 
+It is called before render()
+*/
+  componentWillMount = () => {
+    this.setState({ data: this.props.business });
+  };
+
   // handles form data submission.
-  onSubmit = event => {
-    event.preventDefault();
-    const errors = this.validate(this.state.data);
-    this.setState({ errors });
-    console.log("business", this.state.data);
-    if (Object.keys(errors).length === 0) {
-      this.props.submit(this.state.data);
-      //.catch(err => this.setState({ errors: err.response.data }));
-    }
-  };
-
-  handleDismis = () => {
-    this.setState({ errors: {} });
-  };
-
-  // validate form data
-  validate = data => {
-    const errors = {};
-    if (!data.business) errors.business = "Business name can't be blank";
-    if (!data.location) errors.location = "Location can't be blank";
-    if (!data.category) errors.category = "Category can't be blank";
-
-    return errors;
+  onSubmit = business => {
+    business.preventDefault();
+    const businessDetails = {
+      ...this.state.data
+    };
+    this.props
+      .submit(businessDetails)
+      .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
-    const { data, errors } = this.state;
+    const { errors } = this.state;
+    const { business } = this.props;
     return (
-      <Form onSubmit={this.onSubmit} className="create-business-form">
+      <Form onSubmit={this.onSubmit} className="Edit-event-form">
         {errors.error && (
           <Message negative onDismiss={this.handleDismis}>
             <Message.Header>Something went wrong</Message.Header>
@@ -74,7 +64,7 @@ class CreateBusinessForm extends React.Component {
             id="business"
             name="business"
             placeholder="Business Name"
-            value={data.business}
+            defaultValue={business.business}
             onChange={this.onChange}
           />
           {errors.business && <InlineError text={errors.business} />}
@@ -86,7 +76,7 @@ class CreateBusinessForm extends React.Component {
             id="location"
             name="location"
             placeholder="Business Location"
-            value={data.location}
+            defaultValue={business.business_location}
             onChange={this.onChange}
           />
           {errors.location && <InlineError text={errors.location} />}
@@ -98,13 +88,12 @@ class CreateBusinessForm extends React.Component {
             id="category"
             name="category"
             placeholder="Business Category"
-            value={data.category}
+            defaultValue={business.business_category}
             onChange={this.onChange}
           />
           {errors.category && <InlineError text={errors.category} />}
         </Form.Field>
-
-        <Button ui="true" button="true" color="green" size="large">
+        <Button ui button color="green" size="large">
           Submit
         </Button>
       </Form>
@@ -113,8 +102,10 @@ class CreateBusinessForm extends React.Component {
 }
 
 // typechecking validation
-CreateBusinessForm.propTypes = {
-  submit: propTypes.func
+EditBusinessForm.propTypes = {
+  submit: PropTypes.func,
+  match: PropTypes.func,
+  business: PropTypes.object
 };
 
-export default CreateBusinessForm;
+export default EditBusinessForm;
