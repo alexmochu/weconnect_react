@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Message } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 import SignupForm from "../forms/SignupForm";
 import { Notifications } from "../messages/Notifications";
@@ -11,23 +12,22 @@ class Signup extends React.Component {
   }
 
   submit = data =>
-    this.props
-      .signup(data)
-      .then(() => this.props.history.push("/api/v2/auth/login"));
+    this.props.signup(data).then(() => this.props.history.push("/login"));
 
   render() {
-    const { message } = this.props;
     document.title = "weConnect | Signup";
+    const { isAuthenticated } = this.props;
     return (
       <div style={{ marginTop: "7em" }}>
         <Container text>
-          {message && (
-            <Message positive className="semantic-message">
-              <p>{message}</p>
-            </Message>
+          {!isAuthenticated ? (
+            <div>
+              <h1>Signup</h1>
+              <SignupForm submit={this.submit} />
+            </div>
+          ) : (
+            <Redirect to="/businesses" />
           )}
-          <h1>Signup</h1>
-          <SignupForm submit={this.submit} />
         </Container>
       </div>
     );
@@ -39,6 +39,7 @@ Signup.propTypes = {
     push: PropTypes.func
   }),
   signup: PropTypes.func,
+  isAuthenticated: PropTypes.bool,
   message: PropTypes.string
 };
 
