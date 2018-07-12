@@ -55,7 +55,7 @@ class SignupForm extends React.Component {
     return (
       <Form onSubmit={this.onSubmit} className="signup-form" loading={loading}>
         {errors.error && (
-          <Message negative>
+          <Message negative className="semantic-message">
             <Message.Header>Something went wrong</Message.Header>
             <p>{errors.error}</p>
           </Message>
@@ -66,7 +66,7 @@ class SignupForm extends React.Component {
             type="text"
             id="username"
             name="username"
-            placeholder="Albert"
+            placeholder="Username"
             value={data.username}
             onChange={this.onChange}
           />
@@ -78,7 +78,7 @@ class SignupForm extends React.Component {
             type="email"
             id="email"
             name="email"
-            placeholder="albert@camus.com"
+            placeholder="donjon@mail.com"
             value={data.email}
             onChange={this.onChange}
           />
@@ -112,7 +112,7 @@ class SignupForm extends React.Component {
         </Form.Field>
         <Button button="true">Submit</Button>
         <p>
-          Already have an account? <a href="/api/v2/auth/login">Login</a>
+          Already have an account? <a href="/login">Login</a>
         </p>
       </Form>
     );
