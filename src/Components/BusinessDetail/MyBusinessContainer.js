@@ -3,7 +3,7 @@ import {
   deleteBusiness,
   fetchReviews
 } from "../../actions/businesses.actions";
-import BusinessItem from "./BusinessItem";
+import MyBusinessItem from "./MyBusinessItem";
 import { connect } from "react-redux";
 
 // get data from store and provide as props
@@ -15,9 +15,9 @@ const mapStateToProps = state => ({
 });
 
 /* 
-binds action creators to dispatch and 
-provides then as props 
-*/
+  binds action creators to dispatch and 
+  provides then as props 
+  */
 const mapDispatchToProps = dispatch => ({
   fetchBusiness: id => dispatch(fetchBusiness(id)),
   deleteBusiness: id => dispatch(deleteBusiness(id)),
@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BusinessItem);
+)(MyBusinessItem);
