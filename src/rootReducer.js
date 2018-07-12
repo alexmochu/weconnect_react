@@ -6,6 +6,7 @@ import loading from "./reducers/loading.reducer";
 import error from "./reducers/error.reducer";
 import businesses from "./reducers/businesses";
 import business from "./reducers/business.reducer";
+import reviews from "./reducers/reviews";
 
 export default combineReducers({
   user,
@@ -13,5 +14,6 @@ export default combineReducers({
   error,
   loading,
   businesses,
-  business
+  business,
+  reviews
 });

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Menu } from "semantic-ui-react";
+import { Menu, Dropdown } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+
 import "./Header.css";
 
 class Header extends Component {
@@ -10,80 +12,66 @@ class Header extends Component {
 
   render() {
     const { activeItem } = this.state;
-    const { isAuthenticated, logout, currentUserId } = this.props;
-    let userId = currentUserId ? currentUserId : "";
+    const { isAuthenticated, logout, userName } = this.props;
+    console.log("IS AUTH", isAuthenticated);
     return (
       <Menu fixed="top">
-        <Menu.Item
-          name="home"
-          position="left"
-          active={activeItem === "home"}
-          onClick={this.handleItemClick}
-          href="/"
-        >
-          weConnect
-        </Menu.Item>
-
+        <NavLink to="/" exact>
+          <Menu.Item>weConnect</Menu.Item>
+        </NavLink>
         <Menu.Menu position="right">
           <Menu.Item
             name="browse-businesses"
             color="orange"
             active={activeItem === "browse-businesses"}
             onClick={this.handleItemClick}
-            href="/businesses"
           >
-            View businesses
-          </Menu.Item>
-
-          <Menu.Item
-            name="create-business"
-            color="orange"
-            active={activeItem === "create-business"}
-            onClick={this.handleItemClick}
-            href="/business/new"
-          >
-            Create businesses
-          </Menu.Item>
-          <Menu.Item
-            name="review"
-            color="orange"
-            active={activeItem === "review-businesses"}
-            onClick={this.handleItemClick}
-            href="/review/business"
-          >
-            Review business
-          </Menu.Item>
-          <Menu.Item
-            name="my-businesses"
-            color="orange"
-            active={activeItem === "my-businesses"}
-            onClick={this.handleItemClick}
-            href={`/user/${userId}/businesses`}
-          >
-            My businesses
+            <a href="/businesses">View businesses</a>
           </Menu.Item>
           <Menu.Item
             name="search-business"
             color="orange"
             active={activeItem === "search-businesses"}
             onClick={this.handleItemClick}
-            href={"/search/businesses"}
           >
-            Search businesses
+            <a href="/search/businesses">Search businesses</a>
           </Menu.Item>
           {isAuthenticated ? (
-            <Menu.Item name="logout" color="orange" onClick={() => logout()}>
-              Logout
-            </Menu.Item>
+            <Dropdown item text={userName}>
+              <Dropdown.Menu>
+                <Menu.Item
+                  name="my-businesses"
+                  color="orange"
+                  active={activeItem === "my-businesses"}
+                  onClick={this.handleItemClick}
+                >
+                  <a href={`/user/${userName}/businesses`}>My businesses</a>
+                </Menu.Item>
+                <Menu.Item
+                  name="create-business"
+                  color="orange"
+                  active={activeItem === "create-business"}
+                  onClick={this.handleItemClick}
+                >
+                  <a href="/biz/new">Create businesses</a>
+                </Menu.Item>
+                <Menu.Item
+                  name="logout"
+                  color="orange"
+                  onClick={() => logout()}
+                >
+                  Logout
+                </Menu.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           ) : (
             <Menu.Item
               name="login"
               color="orange"
               active={activeItem === "login"}
               onClick={this.handleItemClick}
-              href="/api/v2/auth/login"
             >
-              Login
+              <NavLink to="/login">Login</NavLink>
             </Menu.Item>
           )}
         </Menu.Menu>
@@ -94,6 +82,7 @@ class Header extends Component {
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  currentUserId: PropTypes.number
+  currentUserId: PropTypes.number,
+  userName: PropTypes.string
 };
 export default Header;

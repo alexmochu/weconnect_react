@@ -5,7 +5,7 @@ import { signup } from "../../actions/auth.actions";
 
 // get data from store and provide as props
 const mapStateToProps = state => ({
-  isAuthenticated: !!state.user.auth_token
+  isAuthenticated: !!state.auth.isAuthenticate
 });
 
 /* 

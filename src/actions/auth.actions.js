@@ -41,7 +41,7 @@ export const logout = () => dispatch => {
   api.user.logout().then(user => {
     localStorage.removeItem("JWT");
     dispatch(userLoggedOut());
-    window.location = "/api/v2/auth/login";
+    window.location = "/login";
   });
 };
 
