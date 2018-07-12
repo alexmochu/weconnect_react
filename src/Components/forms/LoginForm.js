@@ -33,6 +33,10 @@ class LoginForm extends React.Component {
     }
   };
 
+  handleDismis = () => {
+    this.setState({ errors: {} });
+  };
+
   validate = data => {
     const errors = {};
     if (!data.username) errors.username = "Username can't be blank";
@@ -41,11 +45,11 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const { data, errors, loading } = this.state;
+    const { data, errors } = this.state;
     return (
-      <Form onSubmit={this.onSubmit} className="login-form" loading={loading}>
+      <Form onSubmit={this.onSubmit} className="login-form">
         {errors.error && (
-          <Message negative>
+          <Message negative onDismiss={this.handleDismis}>
             <Message.Header>Something went wrong</Message.Header>
             <p>{errors.error}</p>
           </Message>
@@ -56,7 +60,7 @@ class LoginForm extends React.Component {
             type="text"
             id="username"
             name="username"
-            placeholder="Rick Sanchez"
+            placeholder="Username"
             value={data.username}
             onChange={this.onChange}
           />
@@ -68,7 +72,7 @@ class LoginForm extends React.Component {
             type="password"
             name="password"
             id="password"
-            placeholder="grassisbad"
+            placeholder="password"
             value={data.password}
             onChange={this.onChange}
           />
@@ -78,7 +82,7 @@ class LoginForm extends React.Component {
           Submit
         </Button>
         <p>
-          Don't have an account? <a href="/api/v2/auth/register">Sign Up</a>
+          Don't have an account? <a href="/register">Sign Up</a>
         </p>
       </Form>
     );
