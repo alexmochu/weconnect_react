@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="index-container center">
       <h1>Open your E-Business Today.</h1>
-      <a href="/event/new">
+      <a href="/biz/new">
         <Button animated color="red">
           <Button.Content visible>GET STARTED</Button.Content>
           <Button.Content hidden>
