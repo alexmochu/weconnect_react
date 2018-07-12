@@ -5,9 +5,9 @@ import { logout } from "../../actions/auth.actions";
 
 // get data from store and provide as props
 const mapStateToProps = state => ({
-  currentUserId: state.auth.user.sub,
-  isAuthenticated: !!state.user.auth_token,
-  userName: state.auth.user.username
+  isAuthenticated: !!state.auth.isAuthenticated,
+  userName: state.auth.user.username,
+  show: state.user.show
 });
 
 /* 
