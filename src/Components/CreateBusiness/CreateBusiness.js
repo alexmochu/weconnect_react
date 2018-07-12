@@ -10,7 +10,7 @@ export class CreateBusiness extends React.Component {
   // makes call to create business
   submit = business_item =>
     this.props.createBusiness(business_item).then(business => {
-      this.props.history.push("/api/v2/business/");
+      this.props.history.push(`/businesses`);
     });
 
   render() {
