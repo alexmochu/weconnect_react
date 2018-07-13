@@ -53,7 +53,7 @@ class MyBusinessItem extends Component {
 
   render() {
     const { business, message } = this.props;
-    const { errors } = this.state;
+    //const { errors } = this.state;
     return (
       <div>
         <header>
