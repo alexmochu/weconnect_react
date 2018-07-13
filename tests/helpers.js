@@ -1,3 +1,4 @@
+import "jsdom-global/register";
 import React from "react";
 import expect from "expect";
 import Adapter from "enzyme-adapter-react-16";
