@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
     "cov": "npm test -- --coverage",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
