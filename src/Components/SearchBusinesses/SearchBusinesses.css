@@ -1,0 +1,32 @@
+.business-title {
+  text-transform: capitalize;
+}
+
+.searched-businesses-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://images.pexels.com/photos/1130287/pexels-photo-1130287.jpeg?cs=srgb&dl=architecture-billboards-bridge-1130287.jpg&fm=jpg)
+      no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 250px;
+}
+
+.searched-businesses-header h1 {
+  padding-top: 8.5%;
+  font-size: 50px;
+  color: white;
+  font-weight: 100;
+  font-family: "Quicksand", sans-serif;
+}
+
+.searched-businesses-header p {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 100;
+}
+
+button {
+  padding-bottom: 4%;
+}

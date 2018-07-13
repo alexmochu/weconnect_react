@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Message, Icon, Grid, Pagination } from "semantic-ui-react";
+import { Container, Message, Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 import "./ShowBusinesses.css";
@@ -31,14 +31,7 @@ class ShowBusinesses extends React.Component {
 
   render() {
     document.title = "weConnect | Business";
-    const {
-      businesses,
-      message,
-      activePage,
-      boundaryRange,
-      siblingRange,
-      totalPages
-    } = this.props;
+    const { businesses, message } = this.props;
     console.log(">>>>>", this.props);
     return (
       <div>

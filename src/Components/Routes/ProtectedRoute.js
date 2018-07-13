@@ -7,11 +7,7 @@ const ProtectedRoute = ({ isAuthenticated, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/api/v2/auth/login" />
-      )
+      isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
     }
   />
 );
@@ -25,7 +21,7 @@ ProtectedRoute.propTypes = {
 // get data from store and provide as props
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.user.auth_token
+    isAuthenticated: !!state.auth.isAuthenticated
   };
 }
 
