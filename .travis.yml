@@ -6,7 +6,7 @@ cache:
   - node_modules
 script:
   - npm install
-  - npm run build
+  - npm run test
 after_success:
-
-  - cat ./coverage/lcov.info | node node_modules/.bin/coveralls
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token 
+  - npm run coveralls
