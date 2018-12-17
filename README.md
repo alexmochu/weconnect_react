@@ -36,3 +36,24 @@ $ npm test
 ## License
 
 MIT © 2018 Alexmochu
+
+## Application Screenshots
+
+### Homepage
+![home](https://user-images.githubusercontent.com/18735075/50088814-2469e800-0215-11e9-9629-6d724e3a7482.png)
+### Signup Page
+![signup](https://user-images.githubusercontent.com/18735075/50089620-55e3b300-0217-11e9-9c54-55d886ec1373.png)
+### Login Page
+![login](https://user-images.githubusercontent.com/18735075/50089602-49f7f100-0217-11e9-88b5-e6863a818ad5.png)
+### Search and Filter
+![searchandfilter](https://user-images.githubusercontent.com/18735075/50089603-49f7f100-0217-11e9-82f2-e532c3d17a74.png)
+### View Businesses
+![viewbiz](https://user-images.githubusercontent.com/18735075/50089616-52502c00-0217-11e9-90d9-0c9039dd85a2.png)
+### My Businesses Page
+![mybiz](https://user-images.githubusercontent.com/18735075/50089627-57ad7680-0217-11e9-90d3-74ffa4e9a418.png)
+### Review Business
+![bizreview](https://user-images.githubusercontent.com/18735075/50089637-5da35780-0217-11e9-978e-7dd022c5cc5a.png)
+### Review Business Page
+![reviewbizpage](https://user-images.githubusercontent.com/18735075/50089630-58dea380-0217-11e9-813a-ddd58a08bb6a.png)
+### Edit and Delete Business
+![editanddelete](https://user-images.githubusercontent.com/18735075/50089642-6005b180-0217-11e9-8a59-98941c4cbf18.png)
